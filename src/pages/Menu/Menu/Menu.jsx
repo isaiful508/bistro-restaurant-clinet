@@ -4,15 +4,17 @@ import dessertImg from '../../../assets/menu/dessert-bg.jpeg'
 import pizzaImg from '../../../assets/menu/pizza-bg.jpg'
 import saladImg from '../../../assets/menu/salad-bg.jpg'
 import soupImg from '../../../assets/menu/soup-bg.jpg'
-
+import menuCover from '../../../assets/menu/menu-bg.png'
 import useMenu from "../../../hooks/UseMenu";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import MenuCategory from "../MenuCategory/MenuCategory";
+import Cover from "../../Shared/Cover/Cover";
 
 
 const Menu = () => {
 
     const [menu] = useMenu([]);
+
     const dessert = menu.filter(item => item.category === 'dessert')
     const soup = menu.filter(item => item.category === 'soup')
     const salad = menu.filter(item => item.category === 'salad')
@@ -26,42 +28,45 @@ const Menu = () => {
                 <title>Bistro Boos || Menu</title>
                 <meta name="description" content="Helmet application" />
             </Helmet>
+            <Cover
+                bgimg={menuCover}
+            ></Cover>
 
-           {/* main cover */}
-            <SectionTitle 
-            subHeading="Don't miss"
-            heading="TODAY'S OFFER"
+            {/* main cover */}
+            <SectionTitle
+                subHeading="Don't miss"
+                heading="TODAY'S OFFER"
             ></SectionTitle>
             {/* offered menu items */}
             <MenuCategory
-            items={offered}
+                items={offered}
             ></MenuCategory>
-            
+
             {/* desert menu items */}
             <MenuCategory
-            items={dessert}
-            title="DESSERT"
-            img={dessertImg}
+                items={dessert}
+                title="dessert"
+                img={dessertImg}
             ></MenuCategory>
             {/* pizza */}
             <MenuCategory
-            items={pizza}
-            title="pizza"
-            img={pizzaImg}
+                items={pizza}
+                title="pizza"
+                img={pizzaImg}
             ></MenuCategory>
             {/* salad */}
 
             <MenuCategory
-            items={salad}
-            title="salad"
-            img={saladImg}
+                items={salad}
+                title="salad"
+                img={saladImg}
             ></MenuCategory>
             {/* soup */}
-<MenuCategory
-items={soup}
-title="soup"
-img={soupImg}
-></MenuCategory>           
+            <MenuCategory
+                items={soup}
+                title="soup"
+                img={soupImg}
+            ></MenuCategory>
         </div>
     );
 };

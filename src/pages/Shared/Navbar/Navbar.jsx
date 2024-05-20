@@ -9,7 +9,7 @@ const navOptions =
  <NavLink>CONTACT US</NavLink>
  <NavLink>DASHBOARD</NavLink>
  <NavLink to='/menu'>OUR MENU</NavLink>
- <NavLink>OUR SHOP</NavLink>
+ <NavLink to='/order/salad'>ORDER FOOD</NavLink>
   
   </>
 
