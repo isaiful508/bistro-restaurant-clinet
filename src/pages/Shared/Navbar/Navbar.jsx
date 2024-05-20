@@ -5,10 +5,10 @@ const Navbar = () => {
 
 const navOptions = 
   <>
- <NavLink>HOME</NavLink>
+ <NavLink to='/'>HOME</NavLink>
  <NavLink>CONTACT US</NavLink>
  <NavLink>DASHBOARD</NavLink>
- <NavLink>OUR MENU</NavLink>
+ <NavLink to='/menu'>OUR MENU</NavLink>
  <NavLink>OUR SHOP</NavLink>
   
   </>
