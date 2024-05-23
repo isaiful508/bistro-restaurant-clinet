@@ -11,6 +11,12 @@
   font-weight:400;
   font-style: normal;
 }
+.cinzel-500 {
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
 .cinzel-600 {
   font-family: "Cinzel", serif;
   font-optical-sizing: auto;
