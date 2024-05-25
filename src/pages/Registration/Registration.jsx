@@ -4,19 +4,26 @@ import { Helmet } from "react-helmet";
 import { useContext } from "react";
 import { AuthContext } from './../../Provider/AuthProvider';
 
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import toast from "react-hot-toast";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
+
 
 const Registration = () => {
+    const axiosPublic = useAxiosPublic();
+
+
     const {
         register,
         handleSubmit,
-            reset,
+        reset,
         formState: { errors },
     } = useForm()
 
-    const {createUser, logOut, updateUserProfile} = useContext(AuthContext);
+    const { createUser, logOut, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate()
 
-   
+
 
 
 
@@ -29,10 +36,21 @@ const Registration = () => {
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         console.log('User profile updated');
-                        reset();
-                        logOut().then(() => {
-                            navigate('/login');
-                        });
+                        //create user entry in db
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email
+                        }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                   
+                                    reset();
+                                    toast.success("User Created Successfully")
+                                   navigate('/')
+                                }
+                            })
+
                     })
                     .catch(error => console.log(error));
             })
@@ -44,9 +62,9 @@ const Registration = () => {
 
     return (
         <>
-        <Helmet>
-            <title>Bistro Boss || Register</title>
-        </Helmet>
+            <Helmet>
+                <title>Bistro Boss || Register</title>
+            </Helmet>
             <div className="hero  min-h-screen bg-base-200">
 
                 <div className="hero-content flex-col md:flex-row-reverse">
@@ -78,7 +96,7 @@ const Registration = () => {
                                     <span className="label-text">Photo URL</span>
                                 </label>
 
-                                <input {...register("photoURL", { required: true })}  type="text" placeholder="Photo URL" className="input input-bordered" />
+                                <input {...register("photoURL", { required: true })} type="text" placeholder="Photo URL" className="input input-bordered" />
                                 {errors.photoURL && <span className="text-red-600 font-semibold">Photo URL is required is required</span>}
 
                             </div>
@@ -126,7 +144,7 @@ const Registration = () => {
                         <p className="mb-4 text-center">Already Have an account ?
                             <Link to='/login'>Login Here</Link>
                         </p>
-
+                                <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

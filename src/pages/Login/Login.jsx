@@ -5,6 +5,7 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-s
 import { AuthContext } from '../../Provider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import SocialLogin from '../../components/SocialLogin/SocialLogin';
 
 
 const Login = () => {
@@ -69,7 +70,7 @@ const Login = () => {
      }
 
      
-
+     
 
     return (
         <div  className="hero  min-h-screen bg-base-200">
@@ -131,8 +132,11 @@ const Login = () => {
 
                     </form>
                     <p className="mb-4 text-center">New here?  <Link  to='/registration'> Create An Account</Link></p>
-
+                    <div className='text-center'>
+                    <SocialLogin ></SocialLogin>
+                    </div>
                 </div>
+                
             </div>
         </div>
     );

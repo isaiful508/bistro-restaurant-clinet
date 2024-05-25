@@ -6,13 +6,20 @@ import { IoMenu } from "react-icons/io5";
 import { MdMessage } from "react-icons/md";
 
 const Dashboard = () => {
+
+    //TODO : get isAdmin value from the database 
+    const isAdmin = true;
+
     return (
         <div className="flex mt-10">
             {/* dashboard side bar */}
             <div className="w-64 min-h-screen bg-[#D1A054] " >
 
-
-                <ul className="menu uppercase cinzel-500 ">
+                <div className="uppercase text-center mt-8 mb-4">
+                    <h2 className="cinzel-900">BISTRO BOSS</h2>
+                    <p className="cinzel-700">Restaurant</p>
+                </div>
+                <ul className="menu uppercase cinzel-500 p-6">
 
                     <li className="">
 
@@ -56,7 +63,7 @@ const Dashboard = () => {
                             My Bookings</NavLink>
 
                     </li>
-
+                {/* shared navlinks */}
                     <div className="divider"></div>
 
                     <li>
