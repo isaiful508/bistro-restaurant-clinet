@@ -16,11 +16,11 @@ const UseAxiosSecure = () => {
 
     axiosSecure.interceptors.request.use(function (config) {
         const token = localStorage.getItem('access-token')
-        console.log('request stopped by interceptors', token);
+        // console.log('request stopped by interceptors', token);
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         } else {
-            console.log('No token found in local storage');
+            // console.log('No token found in local storage');
         }
         return config;
     }, function (error) {
