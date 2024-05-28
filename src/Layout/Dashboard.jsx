@@ -1,17 +1,20 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaBook, FaMoneyCheckAlt, FaReceipt, FaShoppingBag, FaShoppingCart } from "react-icons/fa";
+import { FaBook, FaList, FaMoneyCheckAlt, FaReceipt, FaShoppingBag, FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { IoIosAddCircle } from "react-icons/io";
 import { IoMenu } from "react-icons/io5";
 import { MdMessage } from "react-icons/md";
+import { Toaster } from "react-hot-toast";
+import UseAdmin from "../hooks/UseAdmin";
 
 const Dashboard = () => {
 
     //TODO : get isAdmin value from the database 
-    const isAdmin = true;
+    const [isAdmin] = UseAdmin();
 
     return (
         <div className="flex mt-10">
+             <Toaster />
             {/* dashboard side bar */}
             <div className="w-64 min-h-screen bg-[#D1A054] " >
 
@@ -21,49 +24,91 @@ const Dashboard = () => {
                 </div>
                 <ul className="menu uppercase cinzel-500 p-6">
 
-                    <li className="">
+                    {
+                        isAdmin ? <>
+                            
+                            <li>
 
-                        <NavLink to='/dashboard/cart'>
-                            <FaShoppingCart></FaShoppingCart>
-                            My Cart</NavLink>
+                                <NavLink to='/dashboard/adminHome'>
+                                    <FaHome></FaHome>
+                                    Admin Home</NavLink>
 
-                    </li>
-                    <li>
+                            </li>
+                            <li>
 
-                        <NavLink to='/dashboard/userHome'>
-                            <FaHome></FaHome>
-                            User Home</NavLink>
+                                <NavLink to='/dashboard/addItems'>
+                                   <FaUtensils></FaUtensils>
+                                    Add Items</NavLink>
 
-                    </li>
-                    <li>
+                            </li>
+                            <li>
 
-                        <NavLink to='/dashboard/reservation'>
-                            <FaReceipt />
-                            Reservation</NavLink>
+                                <NavLink to='/dashboard/manageItems'>
+                                    <FaList></FaList>
+                                    Manage Items</NavLink>
 
-                    </li>
-                    <li>
+                            </li>
+                           
+                            <li>
 
-                        <NavLink to='/dashboard/payment'>
-                            <FaMoneyCheckAlt />
-                            Payment History</NavLink>
+                                <NavLink to='/dashboard/bookings'>
+                                    <FaBook />
+                                    Manage Bookings</NavLink>
 
-                    </li>
-                    <li>
+                            </li>
+                            <li>
 
-                        <NavLink to='/dashboard/review'>
-                            <IoIosAddCircle />
-                            Add Review</NavLink>
+                                <NavLink to='/dashboard/users'>
+                                    <FaUsers />
+                                    All Users</NavLink>
 
-                    </li>
-                    <li>
+                            </li>
+                        </>
+                            :
+                            <><li>
 
-                        <NavLink to='/dashboard/bookings'>
-                            <FaBook />
-                            My Bookings</NavLink>
+                                <NavLink to='/dashboard/cart'>
+                                    <FaShoppingCart></FaShoppingCart>
+                                    My Cart</NavLink>
 
-                    </li>
-                {/* shared navlinks */}
+                            </li>
+                                <li>
+
+                                    <NavLink to='/dashboard/userHome'>
+                                        <FaHome></FaHome>
+                                        User Home</NavLink>
+
+                                </li>
+                                <li>
+
+                                    <NavLink to='/dashboard/reservation'>
+                                        <FaReceipt />
+                                        Reservation</NavLink>
+
+                                </li>
+                                <li>
+
+                                    <NavLink to='/dashboard/payment'>
+                                        <FaMoneyCheckAlt />
+                                        Payment History</NavLink>
+
+                                </li>
+                                <li>
+
+                                    <NavLink to='/dashboard/review'>
+                                        <IoIosAddCircle />
+                                        Add Review</NavLink>
+
+                                </li>
+                                <li>
+
+                                    <NavLink to='/dashboard/bookings'>
+                                        <FaBook />
+                                        My Bookings</NavLink>
+
+                                </li></>
+                    }
+                    {/* shared navlinks */}
                     <div className="divider"></div>
 
                     <li>
@@ -76,14 +121,14 @@ const Dashboard = () => {
                     <li>
 
                         <NavLink to='/menu'>
-                        <IoMenu />
+                            <IoMenu />
                             Menu</NavLink>
 
                     </li>
                     <li>
 
                         <NavLink to='/'>
-                        <FaShoppingBag />
+                            <FaShoppingBag />
 
                             Shop</NavLink>
 
@@ -91,7 +136,7 @@ const Dashboard = () => {
                     <li>
 
                         <NavLink to='/'>
-                        <MdMessage />
+                            <MdMessage />
                             contact</NavLink>
 
                     </li>
