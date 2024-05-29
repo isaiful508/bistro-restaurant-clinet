@@ -28,14 +28,14 @@ const Registration = () => {
 
 
     const onSubmit = (data) => {
-        console.log(data);
+        // console.log(data);
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser);
+                // console.log(loggedUser);
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        console.log('User profile updated');
+                        // console.log('User profile updated');
                         //create user entry in db
                         const userInfo = {
                             name: data.name,
@@ -52,9 +52,13 @@ const Registration = () => {
                             })
 
                     })
-                    .catch(error => console.log(error));
+                    .catch((error) =>{
+                        // console.log(error)
+                    } );
             })
-            .catch(error => console.log(error));
+            .catch((error) => {
+                // console.log(error)
+            } );
     };
 
 

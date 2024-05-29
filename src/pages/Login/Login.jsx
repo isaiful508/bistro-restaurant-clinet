@@ -15,7 +15,7 @@ const Login = () => {
     const location = useLocation();
 
     const from = location.state?.from?.pathname || '/'; 
-    console.log('state from the location', location.state)
+    // console.log('state from the location', location.state)
 
    
     const [disabled, setDisable] = useState(true);
@@ -35,7 +35,7 @@ const Login = () => {
        login(email, password)
        .then(result => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
         Swal.fire({
             title: "User login successful",
             showClass: {
