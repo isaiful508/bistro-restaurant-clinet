@@ -3,15 +3,16 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import UseCart from "../../../hooks/UseCart";
 import Swal from "sweetalert2";
 import UseAxiosSecure from './../../../hooks/UseAxiosSecure';
+import { Link } from "react-router-dom";
 
 
 const Cart = () => {
     const [cart, refetch] = UseCart();
     // console.log(cart)
     const axiosSecure = UseAxiosSecure();
-    const totalPrice =cart.reduce((total, item) => total + item.price, 0);
+    const totalPrice = cart.reduce((total, item) => total + item.price, 0);
 
-    const handleDelete = id =>{
+    const handleDelete = id => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -20,22 +21,22 @@ const Cart = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-            
-            axiosSecure.delete(`/carts/${id}`)
-            .then((res) =>{
-                // console.log(res.data);
-                  Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
-              });
-                refetch();
-            })
+
+                axiosSecure.delete(`/carts/${id}`)
+                    .then((res) => {
+                        // console.log(res.data);
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                        refetch();
+                    })
             }
-          });
-         
+        });
+
     }
     return (
         <div>
@@ -49,7 +50,12 @@ const Cart = () => {
             <div className="flex justify-around items-center gap-4 cinzel-700">
                 <h2 className="text-4xl">Total Orders : {cart.length}</h2>
                 <h2 className="text-4xl">Total Price : $ {totalPrice}</h2>
-                <button className="btn text-white bg-[#D1A054]">Pay</button>
+
+                {cart.length ? <Link to="/dashboard/payment">
+                    <button className="btn bg-[#D1A054]">Pay</button>
+                </Link> :
+                    <button disabled className="btn bg-[#D1A054]">Pay</button>
+                }
             </div>
 
             {/* Order table */}
@@ -72,44 +78,44 @@ const Cart = () => {
                     </thead>
 
                     <tbody className="inter-400">
-                      
-                      {
-                        cart.map((item , idx) =>  <tr
-                        key={item._id}
-                        >
 
-                            <th>
-                                {idx + 1}
-                            </th>
+                        {
+                            cart.map((item, idx) => <tr
+                                key={item._id}
+                            >
 
-                            <td>
+                                <th>
+                                    {idx + 1}
+                                </th>
 
-                                <div className="flex items-center gap-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
-                                            <img src={item.image} alt="food_img" />
+                                <td>
+
+                                    <div className="flex items-center gap-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src={item.image} alt="food_img" />
+                                            </div>
                                         </div>
+
                                     </div>
-                                    
-                                </div>
 
-                            </td>
+                                </td>
 
-                            <td>
-                               {item.name}
-                            </td>
-                            <td> $ {item.price}</td>
+                                <td>
+                                    {item.name}
+                                </td>
+                                <td> $ {item.price}</td>
 
-                            <th>
-                                <button onClick={() => handleDelete(item._id)} className="btn btn-ghost btn-xs"><MdDelete className="text-xl text-red-600" /></button>
-                            </th>
+                                <th>
+                                    <button onClick={() => handleDelete(item._id)} className="btn btn-ghost btn-xs"><MdDelete className="text-xl text-red-600" /></button>
+                                </th>
 
-                        </tr>)
-                      }
-                       
-                        
+                            </tr>)
+                        }
+
+
                     </tbody>
-                    
+
                 </table>
             </div>
 
