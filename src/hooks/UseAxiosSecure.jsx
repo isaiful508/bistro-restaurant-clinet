@@ -7,7 +7,7 @@ import UseAuth from './UseAuth';
 // eslint-disable-next-line react-refresh/only-export-components
 export const axiosSecure = axios.create({
 
-    baseURL: 'https://bistro-boss-server-beta-six.vercel.app'
+    baseURL: 'http://localhost:5000'
 })
 
 const UseAxiosSecure = () => {
@@ -60,7 +60,7 @@ export default UseAxiosSecure;
 
 
 // const axiosSecure = axios.create({
-//     baseURL: 'https://bistro-boss-server-beta-six.vercel.app'
+//     baseURL: 'http://localhost:5000'
 // })
 // const useAxiosSecure = () => {
 //     const navigate = useNavigate();
