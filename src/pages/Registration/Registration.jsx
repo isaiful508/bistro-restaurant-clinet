@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form"
 import { Helmet } from "react-helmet";
 import { useContext } from "react";
 import { AuthContext } from './../../Provider/AuthProvider';
+import signUpLogo from "../../assets/others/authentication2.png";
+import bgImg from '../../assets/others/authentication.png'
 
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
@@ -69,20 +71,20 @@ const Registration = () => {
             <Helmet>
                 <title>Bistro Boss || Register</title>
             </Helmet>
-            <div className="hero  min-h-screen bg-base-200">
+            <div className="hero  min-h-screen " style={{ backgroundImage: `url(${bgImg})` }}>
 
                 <div className="hero-content flex-col md:flex-row-reverse">
 
                     <div className="text-center  md:w-1/2 lg:text-left">
 
-                        <h1 className="text-5xl font-bold">Register Here!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                            <img src={signUpLogo} alt="" />
+                        
 
                     </div>
 
-                    <div className="card  md:w-1/2 max-w-sm shadow-2xl bg-base-100">
+                    <div className="card  md:w-1/2  bg-base-100">
 
-                        <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                        <form onSubmit={handleSubmit(onSubmit)} className="card-body inter-600">
 
                             <div className="form-control">
 
@@ -141,14 +143,17 @@ const Registration = () => {
 
                             <div className="form-control mt-6">
 
-                                <input className="btn btn-primary" type="submit" value="Register" />
+                                <input className="btn text-white bg-[#D1A054B3]" type="submit" value="Sign In" />
                             </div>
 
                         </form>
-                        <p className="mb-4 text-center">Already Have an account ?
-                            <Link to='/login'>Login Here</Link>
+                        <p className="mb-4 text-center inter-500 text-[#D1A054]">Already Have an account ?
+                            <Link className="inter-600" to='/login'>Login Here</Link>
                         </p>
+                        <p className="inter-500 text-center">Or Sign Up with</p>
+                                <div className="text-center mt-2">
                                 <SocialLogin></SocialLogin>
+                                </div>
                     </div>
                 </div>
             </div>

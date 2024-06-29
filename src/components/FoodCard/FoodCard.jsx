@@ -67,7 +67,7 @@ const FoodCard = ({ item }) => {
 
             <div>
                 <img src={image} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500 relative" />
-                <p className="bg-[#111827] rounded-md text-white absolute px-2 -mt-72">{price}</p>
+                <p className="bg-[#111827] rounded-md text-white absolute px-2 -mt-72">{price} $</p>
             </div>
 
             <div className="flex flex-col justify-between p-6 space-y-8">
@@ -77,6 +77,7 @@ const FoodCard = ({ item }) => {
                     <h2 className="text-2xl text-center inter-600">{name}</h2>
 
                     <p className="dark:text-gray-800 inter-400">{recipe}</p>
+                   
 
                 </div>
 
