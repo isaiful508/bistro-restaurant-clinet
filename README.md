@@ -2,7 +2,11 @@
 
 Live Site URLs:
 - [Firebase](https://bistro-boss-e654b.web.app/)
+## Access Information
 
+- **Admin Email:** lotejix330@kinsef.com
+- **Admin Password:** 111111Aa#
+- 
 ## Project Overview
 
 Bistro Boss Restaurant is a digital platform designed to enhance dining experiences by facilitating online reservations and menu browsing.And a user can order food from here payment via website through stripe payment gateway system
@@ -11,7 +15,8 @@ Bistro Boss Restaurant is a digital platform designed to enhance dining experien
 
 - **Online Reservations**: Users can easily book tables and view available times.
 - **Menu Showcase**: Interactive menu display with descriptions and images.
-- **Paymnet**: Food can be ordered and payment in onlne.
+- **Paymnet**: Food can be ordered and payment in online.
+- **Dashboard**: Here has a admin dashboard.Admin can manage order and manages user and many other things.
 
 ## Technologies Used
 
